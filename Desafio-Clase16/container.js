@@ -41,7 +41,7 @@ class Container {
 
     async upDateById(id, product) {
         try {
-            await this.knex.from(this.tabla)
+            await this.knex.from(this.table)
                             .where({id: id})
                             .update({...product});
             return {message: 'Producto actualizado'};
@@ -65,7 +65,7 @@ class Container {
 
     async deleteAll() {
         try {
-            await this.knex.from(yhis.table).del();
+            await this.knex.from(this.table).del();
             return {message: 'Todos los productos eliminados'};
         } catch (error) {
             console.log(`Error al eliminar el producto: ${error}`)
