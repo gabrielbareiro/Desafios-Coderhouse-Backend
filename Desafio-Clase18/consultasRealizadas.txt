@@ -1,0 +1,44 @@
+
+punto 3
+	db.products.find()
+
+	db.messages.find()
+
+punto 4
+	db.products.estimatedDocumentCount()
+
+	db.messages.estimatedDocumentCount()
+
+
+5- Realizar un CRUD sobre la colección de productos:
+	
+a-
+	db.products.insertOne({title: "turron", price: 190, image: "http://dummyimage.com/x.png/cc0000/ffffff"})
+	
+b-	
+	db.products.find({title:"Cheese - Feta"}).pretty()
+ i)
+	db.products.find({price:{$lt:1000}}).pretty()
+
+ ii)
+	db.products.find({$or: [{price:{$gte:1000}},{price:{lte:3000}}]}).pretty()
+ iii)
+	db.products.find({price:{$gt:3000}}).pretty()
+ iv)
+	db.products.find({},{title:1}).skip(2).limit(1).sort({price:1}).pretty()
+c-
+	db.products.updateMany({},{$set: {stock: 100}},{upsert:true})
+d-
+	db.products.updateMany({price:{$gt:3000}},{$set: {stock: 0}})
+e-
+	db.products.deleteMany({price:{$lt:1000}})
+6-
+	db.createUser(
+	{
+	user: "pepe",
+	pwd: "asd456",
+	roles: [
+	{ role: "read", db: "ecommerce" }
+	]
+	}
+	)
